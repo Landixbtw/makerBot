@@ -7,7 +7,7 @@ import mariadb
 import os
 import logging
 import sys
-from help import MyHelp
+from helpcommand import MyHelp
 
 load_dotenv()
 token = str(os.getenv("TOKEN"))
@@ -21,7 +21,7 @@ if not os.path.exists(logs_dir):
     os.makedirs(logs_dir)
     print("Made the logs folder")
 # Logging handler
-hanlder = logging.FileHandler(filename="./logs/discord.log", encoding="utf-8", mode="w")
+handler = logging.FileHandler(filename="./logs/discord.log", encoding="utf-8", mode="w")
 
 # This handles the "Bot" and a class for better organazation
 
@@ -46,7 +46,7 @@ class bot(commands.Bot):
         print(f"{bot.user.name} is ready to rumble!")
         print("Published by Moritz Henri Richard Reiswaffel III ")
         try:
-            synced = await.self.tree.sync()
+            synced = await self.tree.sync()
             print(f"Synced {len(synced)} commands!")
         except Exception as syncErr:
             print(syncErr)
@@ -55,7 +55,7 @@ class bot(commands.Bot):
         print("---------------------------")
         
         await bot.change_presence(
-            activity = discord.Activiy(
+            activity = discord.activity(
                 type=discord.ActivityType.watching, name=f"{bot.command_prefix}help"
             )
         )
