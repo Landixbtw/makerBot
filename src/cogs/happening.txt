@@ -1,0 +1,5 @@
+You might ask yourself right now "What is the bot doing now ?". The bot is creating a template server.
+So just some template server, with all sorts of roles, channels and categories to get you up and running 
+as fast as possible.
+
+The bot will also assign the owner of the server the highest roles the bot can give.

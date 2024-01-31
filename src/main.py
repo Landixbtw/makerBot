@@ -8,6 +8,8 @@ import os
 import logging
 import sys
 from helpcommand import MyHelp
+from roles_module import roles
+
 
 load_dotenv()
 token = str(os.getenv("TOKEN"))
@@ -25,15 +27,16 @@ handler = logging.FileHandler(filename="./logs/discord.log", encoding="utf-8", m
 
 # This handles the "Bot" and a class for better organazation
 
+
 class bot(commands.Bot):
     def __init__(
         self, 
         ): 
-        super().__init__(command_prefix="?", intents=discord.Intents.all())
+        super().__init__(command_prefix="<<", intents=discord.Intents.all())
 
     async def setup_hook(self):
         print("loading cogs ...")
-
+            
         for file in os.listdir("./cogs/"): 
             if file.endswith(".py"):
                 try:
@@ -41,7 +44,8 @@ class bot(commands.Bot):
                     await bot.load_extension(f"cogs.{name}")
                 except Exception as cogsErr:
                     print(f"ERROR: {cogsErr}")
-    
+        
+        
     async def on_ready(self):
         print(f"{bot.user.name} is ready to rumble!")
         print("Published by Moritz Henri Richard Reiswaffel III ")
@@ -64,5 +68,6 @@ class bot(commands.Bot):
 bot = bot()
 
 bot.help_command = MyHelp()
+
 bot.run(token, log_handler= handler)
 
