@@ -26,7 +26,7 @@ if not os.path.exists(logs_dir):
 handler = logging.FileHandler(filename="./logs/discord.log", encoding="utf-8", mode="w")
 
 # This handles the "Bot" and a class for better organazation
-
+print("What the fuck is happening")
 
 class bot(commands.Bot):
     def __init__(
