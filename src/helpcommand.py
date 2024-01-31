@@ -8,4 +8,4 @@ bot = commands.Bot(command_prefix='?', intents=intents)
 class MyHelp(commands.HelpCommand):
     #&help
     async def send_bot_help(self, mapping):
-    ctx.send("This bot supports multiple commands. To find more about them just type ?Info{command}")
+        await self.ctx.send("This bot supports multiple commands. To find more about them just type ?Info{command}")

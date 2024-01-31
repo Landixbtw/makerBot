@@ -38,7 +38,7 @@ class bot(commands.Bot):
             if file.endswith(".py"):
                 try:
                     name = file[:-3]
-                    await bot.load_extensions(f"cogs.{name}")
+                    await bot.load_extension(f"cogs.{name}")
                 except Exception as cogsErr:
                     print(f"ERROR: {cogsErr}")
     
@@ -55,7 +55,7 @@ class bot(commands.Bot):
         print("---------------------------")
         
         await bot.change_presence(
-            activity = discord.activity(
+            activity = discord.Activity(
                 type=discord.ActivityType.watching, name=f"{bot.command_prefix}help"
             )
         )
@@ -64,5 +64,5 @@ class bot(commands.Bot):
 bot = bot()
 
 bot.help_command = MyHelp()
-bot.run(token, logging_handler = handler)
+bot.run(token, log_handler= handler)
 
