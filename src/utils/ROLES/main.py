@@ -14,11 +14,9 @@ class roles:
         self,
     ):
 
-        print("CREATING ROLES")
-
+        print("-->CREATING ROLES<--")
         try:
             await self.guild.create_role(name="Administrator")
-            #           await ctx.send("Created role Administrator", ephemeral=True)
             time.sleep(1)
             await self.guild.create_role(name="Moderator")
             time.sleep(1)
@@ -61,6 +59,6 @@ class roles:
             time.sleep(1)
             await self.guild.create_role(name="Event Ping")
 
-            print("Created roles")
+            print("Successfully created all roles.")
         except Exception as createErr:
             print(f"Error creating roles: {createErr}")
